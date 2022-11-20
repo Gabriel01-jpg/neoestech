@@ -9,9 +9,9 @@ export interface IMonitoring {
 	data_hora: string
 }
 
-export default async function getMonitoring(): Promise<IMonitoring[] | null> {
+export default async function getMonitoring(id: number): Promise<IMonitoring[] | null> {
     try {
-        const response = await api.get<IMonitoring[]>('/monitoramento/historico/3595/24?chave=temperatura')
+        const response = await api.get<IMonitoring[]>(`/monitoramento/historico/${id}/24?chave=temperatura`)
 
         return response.data;
     } catch(e){

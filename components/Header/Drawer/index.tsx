@@ -18,7 +18,7 @@ export function SideDrawer(){
     return (
         <div className="ml-3 lg:hidden cursor-pointer">
             <GiHamburgerMenu className='text-gray-700 text-xl' onClick={handleOpenSideDrawer}/>
-            <Drawer placement="left" open={isOpen} onClose={handleCloseSideDrawer}>
+            <Drawer title="Navegação" placement="left" open={isOpen} onClose={handleCloseSideDrawer} className="font-serif">
                 <div>
                     <Sidebar sidebar={true} />
                 </div>

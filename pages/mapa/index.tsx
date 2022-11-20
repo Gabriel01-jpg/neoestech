@@ -25,9 +25,8 @@ interface ITableData {
 export default function Mapa(){
     const [installations, setInstallations] = useState<IInstallations[] | null>(null);
     const [dataTable, setDataTable] = useState<ITableData[] |  undefined>(undefined);
-    const [isLoading, setIsLoading] = useState(false);
     const [center, setCenter] = useState<number[] | null>(null);
-
+    const [screenHeight, setScreenHeight] = useState(0);
 
     const columns: ColumnsType<ITableData> = [
         {
@@ -39,16 +38,19 @@ export default function Mapa(){
             title: 'Status',
             dataIndex: 'status',
             key: 'status',
+            responsive: ['sm'],
         },
         {
             title: 'Latitude',
             dataIndex: 'latitude',
             key: 'latitude',
+            responsive: ['lg'],
         },
         {
             title: 'Longitude',
             dataIndex: 'longitude',
             key: 'longitude',
+            responsive: ['lg'],
         },
         {
             title: 'Ações',
@@ -64,7 +66,8 @@ export default function Mapa(){
     });
 
     useEffect(() => {
-        requestInstalacoesAPI()
+        requestInstalacoesAPI();
+        setScreenHeight(window.innerHeight);
     }, [])
     useEffect(() => {
         const newDataTable = installations && installations.map((current, index) => {
@@ -86,7 +89,7 @@ export default function Mapa(){
             // TODO: Disparar erro
         }
         
-    } 
+    }
 
     return (
         <>
@@ -97,14 +100,14 @@ export default function Mapa(){
                 <Header />
                 <div className="flex w-full h-[calc(100vh-7.5rem)]">
                     <Sidebar />
-                    <div className="flex flex-col bg-gray-50 max-h-full w-full rounded-lg my-6 relative">
+                    <div className="flex flex-col bg-gray-50 max-h-full w-full rounded-lg relative lg:my-6">
                         <h1 className="font-medium text-gray-600 text-2xl mt-6 ml-4">Instalações</h1>
                         {installations ? (
                             <>
                                 <div className="mx-4 ">
-                                    <Table pagination={{ pageSize: 4 }} columns={columns} dataSource={dataTable}/>
+                                    <Table pagination={{ pageSize: screenHeight > 897 ? 4 : screenHeight < 668 ? 1 : 2}} columns={columns} dataSource={dataTable}/>
                                 </div>
-                                <div className="flex w-full h-1/2 absolute bottom-0 ">
+                                <div className="flex w-full h-1/2 absolute bottom-0">
                                     <MapWithNoSSR installations={installations} center={center} />
                                 </div>                            
                             </>

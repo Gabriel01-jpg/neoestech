@@ -4,7 +4,7 @@ import {
   GetServerSidePropsResult,
 } from "next";
 import { destroyCookie, parseCookies } from "nookies";
-import { api } from "../services/apiInstance";
+import { api } from "../services/api";
 type WithSSRAuthOptions = {
   permissions?: string[];
   roles?: string[];
@@ -35,7 +35,6 @@ export function withSSRAuth<P extends { [key: string]: any; }>(
       return await fn(ctx);
     } catch (err) {
       destroyCookie(ctx, "neo.token");
-      destroyCookie(ctx, "neo.refreshToken");
       return {
         redirect: {
           destination: "/",

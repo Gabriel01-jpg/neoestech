@@ -20,9 +20,9 @@ export default function Home() {
     try {
       setIsSubmiting(true);
       const user = await loginService({ username, password });
-      user && setCookie(null, 'neo.token', user.token)
-      user && serUserOnStorage(user)      
-      router.push('/home')
+      user && setCookie(null, 'neo.token', user.token);
+      user && serUserOnStorage(user);     
+      router.push('/mapa');
       setIsSubmiting(false);
     } catch(e){
       setIsSubmiting(false);
@@ -60,9 +60,7 @@ export default function Home() {
           before:content-[""] before:w-[calc(100%-345px)] before:left-0
           before:h-[1px] before:bg-black before:absolute before:mt-[10px]
           after:hover:bg-orange-800 before:hover:bg-orange-800
-          hover:text-orange-800 hover:underline
-
-          '>
+          hover:text-orange-800 hover:underline'>
             Primeiro acesso ou não sabe sua senha?
           </a>
           <Form.Item>
@@ -72,6 +70,9 @@ export default function Home() {
 
       </main>
     </div>
+
+
+
   
   )
 }

@@ -11,10 +11,11 @@ import {
     ): Promise<GetServerSidePropsResult<P>> => {
       const cookies = parseCookies(ctx);
   
+      console.log(cookies)
       if (cookies["neo.token"]) {
         return {
           redirect: {
-            destination: "/home",
+            destination: "/mapa",
             permanent: false,
           },
         };

@@ -1,5 +1,5 @@
 import { User } from "../../context/AuthProvider";
-import { api } from "../apiInstance";
+import { api } from "../api";
 
 interface ILogin {
     username: string;

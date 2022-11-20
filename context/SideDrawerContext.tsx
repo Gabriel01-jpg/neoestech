@@ -1,4 +1,4 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react"
+/* import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react"
 import { destroyCookie, setCookie } from 'nookies'
 import { getUserOnStorage } from "../utils/Helpers/storage/getUserOnStorage";
 
@@ -12,16 +12,15 @@ export interface User {
     uuid: string;
 }
 
-type AuthContextProps = {
-    user: User | undefined;
-    isAuthenticated: boolean;
-    setUser: Dispatch<SetStateAction<User | undefined>>
+type SideDrawerContextProps = {
+   isOpen: boolean;
+   handleOpen: () => void;
     
 }
 
-export const AuthContext = createContext({} as AuthContextProps);
+export const SideDrawerContext = createContext({} as SideDrawerContextProps);
 
-export function AuthProvider({ children } : Props){
+export function SideDrawerProvider({ children } : Props){
     const [user, setUser] = useState<User | undefined>(undefined);
 
     const isAuthenticated = !!user;
@@ -37,9 +36,9 @@ export function AuthProvider({ children } : Props){
     }, [])
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, user, setUser }}>
+        <SideDrawerContext.Provider value={{ isAuthenticated, user, setUser }}>
             {children}
-        </AuthContext.Provider>
+        </SideDrawerContext.Provider>
 
     )
 }
@@ -47,3 +46,6 @@ export function AuthProvider({ children } : Props){
 export function SignOut(){
     destroyCookie(null, 'neo.token')
 }
+ */
+
+export const Error = '';

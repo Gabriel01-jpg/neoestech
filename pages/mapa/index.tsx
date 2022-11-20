@@ -13,22 +13,15 @@ import { withSSRAuth } from "../../utils/WithSSRAuth"
 import getInstalacoes, { IInstallations } from "../../services/getInstallations"
 import { Header } from "../../components/Header";
 import { SpinElement } from "../../components/Spin";
+import { IInstallationsDTO, useInstallations } from "../../hooks/useInstallations";
 
-
-interface ITableData {
-    nome: string;
-    latitude: string;
-    longitude: string;
-    status: string;
-}
 
 export default function Mapa(){
-    const [installations, setInstallations] = useState<IInstallations[] | null>(null);
-    const [dataTable, setDataTable] = useState<ITableData[] |  undefined>(undefined);
-    const [center, setCenter] = useState<number[] | null>(null);
+    const { installations, center, setCenter } = useInstallations();
     const [screenHeight, setScreenHeight] = useState(0);
 
-    const columns: ColumnsType<ITableData> = [
+
+    const columns: ColumnsType<IInstallationsDTO> = [
         {
             title: 'Nome',
             dataIndex: 'nome',
@@ -66,30 +59,9 @@ export default function Mapa(){
     });
 
     useEffect(() => {
-        requestInstalacoesAPI();
         setScreenHeight(window.innerHeight);
     }, [])
-    useEffect(() => {
-        const newDataTable = installations && installations.map((current, index) => {
-            return {
-                ...current,
-                key: index,
-                status: current.status_internet
-            }
-        })
-        installations && setCenter([installations[0].latitude, installations[0].longitude])
-        setDataTable(newDataTable);
-    }, [installations])
-
-    const requestInstalacoesAPI = async () => {
-        try {
-            const installations = await getInstalacoes();
-            installations && setInstallations(installations)
-        } catch(e){
-            // TODO: Disparar erro
-        }
-        
-    }
+    
 
     return (
         <>
@@ -105,7 +77,7 @@ export default function Mapa(){
                         {installations ? (
                             <>
                                 <div className="mx-4 ">
-                                    <Table pagination={{ pageSize: screenHeight > 897 ? 4 : screenHeight < 668 ? 1 : 2}} columns={columns} dataSource={dataTable}/>
+                                    <Table pagination={{ pageSize: screenHeight > 897 ? 4 : screenHeight < 668 ? 1 : 2}} columns={columns} dataSource={installations}/>
                                 </div>
                                 <div className="flex w-full h-1/2 absolute bottom-0">
                                     <MapWithNoSSR installations={installations} center={center} />

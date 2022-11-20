@@ -4,10 +4,11 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import { IInstallationsDTO } from "../../hooks/useInstallations";
 
 
 interface Props {
-    installations: IInstallations[]
+    installations: IInstallationsDTO[]
     center: any
 }
 
@@ -29,10 +30,10 @@ function Map({ installations, center }: Props){
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {installations.map((installation, index)=> (
-                <Marker key={index} title={installation.status_internet} position={[installation.latitude, installation.longitude]}>
+                <Marker key={index} title={installation.status} position={[installation.latitude, installation.longitude]}>
                     <Popup >
                         {installation.nome} <br />
-                        {installation.status_internet} <br />
+                        {installation.status} <br />
                         Lat: {installation.latitude} <br />
                         Long: {installation.longitude}
                     </Popup>

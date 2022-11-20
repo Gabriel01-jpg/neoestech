@@ -1,7 +1,7 @@
 import { api } from "../api";
 
 export interface IPricesUpdate {
-    id: string;
+    id: number;
     city: string;
     price: number;
     fuel: string;

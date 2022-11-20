@@ -55,8 +55,9 @@ export default function Edit({ initialCity, initialFuel, initialPrice } : Props)
 
     const handleSubmit = async () => {
         try {
-            const create = await updatePrices({
-                city, fuel, price, id
+            const create = id && await updatePrices({
+                city, fuel, price,
+                id: Number(id)
             })
             create && messageApi.open({
                 type: 'success',
@@ -149,7 +150,7 @@ export default function Edit({ initialCity, initialFuel, initialPrice } : Props)
 export const getServerSideProps = withSSRAuth(async (ctx) => {
     const { params } = ctx
 
-    const response = await getPriceById(Number(params.id));
+    const response = params && await getPriceById(Number(params.id));
 
     return {
         props: {

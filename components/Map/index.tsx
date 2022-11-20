@@ -8,7 +8,7 @@ import "leaflet-defaulticon-compatibility";
 
 interface Props {
     installations: IInstallations[]
-    center: number[] | null
+    center: any
 }
 
 function Map({ installations, center }: Props){
@@ -28,8 +28,8 @@ function Map({ installations, center }: Props){
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {installations.map(installation => (
-                <Marker title={installation.status_internet} position={[installation.latitude, installation.longitude]}>
+            {installations.map((installation, index)=> (
+                <Marker key={index} title={installation.status_internet} position={[installation.latitude, installation.longitude]}>
                     <Popup >
                         {installation.nome} <br />
                         {installation.status_internet} <br />

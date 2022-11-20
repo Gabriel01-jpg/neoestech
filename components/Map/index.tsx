@@ -8,7 +8,7 @@ import "leaflet-defaulticon-compatibility";
 
 interface Props {
     installations: IInstallations[]
-    center: number[]
+    center: number[] | null
 }
 
 function Map({ installations, center }: Props){

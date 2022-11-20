@@ -6,7 +6,7 @@ interface ILogin {
     password: string;
 }
 
-export default async function loginService({ username, password } : ILogin): Promise<User> {
+export default async function loginService({ username, password } : ILogin): Promise<User | undefined> {
     try {
         const response = await api.post<User>('/login', {
             login: username,

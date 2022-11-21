@@ -30,7 +30,7 @@ export default function Grafico(){
                 <Header />
                 <div className="flex w-full h-[calc(100vh-7.5rem)]">
                     <Sidebar />
-                    <div className="flex flex-col bg-white max-h-full w-full rounded-2xl lg:mt-6">
+                    <div className="flex flex-col bg-white max-h-full w-full rounded-2xl lg:mt-6 overflow-x-scroll">
                         <h1 className="font-medium text-gray-600 text-2xl mt-6 ml-4">Gráficos</h1>
                         <div className="h-full flex flex-col justify-around mb-8">
                             {charts.map(chart => (

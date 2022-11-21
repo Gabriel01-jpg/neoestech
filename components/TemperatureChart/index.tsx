@@ -40,7 +40,7 @@ export function TemperaturaChart({ id } : Props){
                             </div>
                         </div> 
                     </div>
-                    <div className="lg:w-[720px] w-full lg:mr-6">
+                    <div className="lg:w-[720px] w-full min-h-full lg:mr-6">
                         <Chart data={data} />
                     </div>
                 </div>

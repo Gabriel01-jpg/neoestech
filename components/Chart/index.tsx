@@ -17,7 +17,7 @@ export function Chart({ data } : Props){
           <XAxis dataKey="name" height={100} tick={<CustomizedAxisTick />} />
           <YAxis interval={0} width={20}/>
           <Tooltip />
-          <Line type="linear" dataKey="temperature" stroke="#e16630" />
+          <Line type="monotone" dataKey="temperature" stroke="#e16630" />
         </LineChart>
       </ResponsiveContainer>
     );

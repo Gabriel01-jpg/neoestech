@@ -13,7 +13,7 @@ export function TemperaturaChart({ id } : Props){
     return (
         <>
             {data ? (
-                <div className="flex lg:flex-row flex-col h-64 mt-[32px] mx-4 justify-between">
+                <div className="flex lg:flex-row flex-col h-64 mt-[68px] mx-4 justify-between lg:mt-[32px]">
                     <div className="flex flex-col ml-4 mb-4">
                         <div className="hidden lg:flex flex-col mb-4">
                             <p className="font-bold text-sm">24 horas atrás</p>
@@ -23,7 +23,7 @@ export function TemperaturaChart({ id } : Props){
                             </p>
                         </div>
                         <div className="flex-col">
-                            <p className="font-bold text-sm" >Última temperatura</p>
+                            <p className="font-bold text-sm " >Última temperatura</p>
                             <p className="font-bold text-orange-800  text-lg">{lastData?.temperature}</p>
                             <div className="flex items-center text-gray-400">
                                 <p className="inline-block items-center font-medium text-[0.8rem]">

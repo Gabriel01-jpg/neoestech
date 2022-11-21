@@ -15,6 +15,6 @@ export default async function loginService({ username, password } : ILogin): Pro
 
         return response.data;
     } catch(e){
-
+        throw new Error('')
     }
 }

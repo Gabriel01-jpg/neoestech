@@ -12,6 +12,7 @@ import { AiOutlineEdit } from "react-icons/ai"
 import removePriceById from "../../services/removePriceById"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { SpinElement } from "../../components/Spin"
 
 export default function Combustiveis(){
     const router = useRouter()
@@ -111,12 +112,17 @@ export default function Combustiveis(){
                     <Sidebar />
                     <div className="flex flex-col bg-white max-h-full w-full rounded-2xl lg:my-6">
                         <h1 className="font-medium text-gray-600 text-2xl mt-6 ml-4">Combustiveis</h1>
-                        <div className="flex flex-col w-full mt-12">
-                            <Link href='/combustiveis/create' className='self-end'>
-                                <button className="mb-4 mr-5 bg-orange-800 text-white px-4 py-[8px] rounded hover:brightness-90">Adicionar</button>
-                            </Link>
-                            <Table pagination={{ pageSize: 5 }} columns={columns} dataSource={prices}/>
-                        </div>
+                        {prices ? (
+                            <div className="flex flex-col w-full mt-12">
+                                <Link href='/combustiveis/create' className='self-end'>
+                                    <button className="mb-4 mr-5 bg-orange-800 text-white px-4 py-[8px] rounded hover:brightness-90">Adicionar</button>
+                                </Link>
+                                <Table pagination={{ pageSize: 5 }} columns={columns} dataSource={prices}/>
+                            </div>
+                        ): (
+                            <SpinElement size="large" />
+                        )}
+                        
                     </div>
                 </div>
             </Content >

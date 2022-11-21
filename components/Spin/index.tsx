@@ -3,8 +3,12 @@ import { Spin } from "antd";
 
 const antIcon = <LoadingOutlined className="text-gray-600 mt-6" spin />;
 
-export function SpinElement(){
+interface Props {
+    size?: 'large' | 'small';
+}
+
+export function SpinElement({ size = 'large' }: Props){
     return (
-        <Spin size="large" indicator={antIcon}/>
+        <Spin size={size} indicator={antIcon}/>
     )
 }

@@ -1,6 +1,7 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react"
 import { destroyCookie, setCookie } from 'nookies'
 import { getUserOnStorage } from "../utils/Helpers/storage/getUserOnStorage";
+import { api } from "../services/api";
 
 interface Props {
     children: ReactNode;
@@ -30,6 +31,7 @@ export function AuthProvider({ children } : Props){
         const user = getUserOnStorage();
         if(user){
             setUser(user)
+            api.defaults.headers["Authorization"] = `Bearer ${user.token}`;
         } else {
             SignOut();
         }

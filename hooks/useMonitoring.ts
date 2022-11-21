@@ -9,8 +9,10 @@ export function useMonitoring({ id } : useMonitoringProps){
     const [data, setData] = useState<any>(null);
     const [initialData, setInitialData] = useState<any>(null);
     const [lastData, setLastData] = useState<any>(null);
+    const [loading, setLoading] = useState(false);
 
     const addMonitoring = useCallback(async () => {
+        setLoading(true);
         const monitoring = await getMonitoring(id)
         const newData = monitoring && monitoring.map(current => {
             return {
@@ -27,11 +29,16 @@ export function useMonitoring({ id } : useMonitoringProps){
             data: newData && newData[newData.length - 1]?.name,
             temperature: newData && newData[newData.length - 1]?.temperature
         })
+        setLoading(false);
     }, [id])
 
     useEffect(() => {
         addMonitoring();
     }, [id])
 
-    return { data, initialData, lastData }
+    const refetch = () => {
+        addMonitoring();
+    }
+
+    return { data, initialData, lastData, refetch, loading }
 }

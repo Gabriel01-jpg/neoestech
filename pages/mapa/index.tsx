@@ -84,7 +84,7 @@ export default function Mapa(){
                                 </div>                            
                             </>
                         ) : (
-                            <SpinElement />
+                            <SpinElement/>
                         )}
                     </div>
                 </div>

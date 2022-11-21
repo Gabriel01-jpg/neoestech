@@ -8,6 +8,7 @@ import { withSSRGuest } from '../utils/WithSSRGuest';
 import { setCookie } from 'nookies'
 import { useRouter } from 'next/router';
 import { serUserOnStorage } from '../utils/Helpers/storage/setUserOnStorage';
+import { api } from '../services/api';
 
 export default function Home() {
   const router = useRouter()
@@ -21,9 +22,9 @@ export default function Home() {
       setIsSubmiting(true);
       const user = await loginService({ username, password });
       user && setCookie(null, 'neo.token', user.token);
-      user && serUserOnStorage(user);     
+      user && serUserOnStorage(user);
+      api.defaults.headers["Authorization"] = `Bearer ${user?.token}`;     
       router.push('/mapa');
-      setIsSubmiting(false);
     } catch(e){
       setIsSubmiting(false);
     }

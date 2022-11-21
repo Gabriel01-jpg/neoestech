@@ -47,5 +47,6 @@ export function AuthProvider({ children } : Props){
 }
 
 export function SignOut(){
-    destroyCookie(null, 'neo.token')
+    destroyCookie(null, 'neo.token');
+    localStorage.clear();
 }

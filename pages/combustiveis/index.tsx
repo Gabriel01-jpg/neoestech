@@ -110,14 +110,14 @@ export default function Combustiveis(){
                 <Header />
                 <div className="flex w-full h-[calc(100vh-7.5rem)]">
                     <Sidebar />
-                    <div className="flex flex-col bg-white max-h-full w-full rounded-2xl lg:my-6">
+                    <div className="flex flex-col bg-white max-h-full w-full rounded-2xl lg:my-6 lg:overflow-hidden overflow-y-scroll">
                         <h1 className="font-medium text-gray-600 text-2xl mt-6 ml-4">Combustiveis</h1>
                         {prices ? (
                             <div className="flex flex-col w-full mt-12">
                                 <Link href='/combustiveis/create' className='self-end'>
                                     <button className="mb-4 mr-5 bg-orange-800 text-white px-4 py-[8px] rounded hover:brightness-90">Adicionar</button>
                                 </Link>
-                                <Table pagination={{ pageSize: 5 }} columns={columns} dataSource={prices}/>
+                                <Table pagination={{ pageSize: 8 }} columns={columns} dataSource={prices}/>
                             </div>
                         ): (
                             <SpinElement size="large" />

@@ -39,7 +39,7 @@ export default function Home() {
 
         <Form className='flex-column w-full max-w-[450px] items-center justify-center px-8'>
           <div className='w-full flex justify-center mb-6'>
-            <img src="logo.png"/>
+            <img src="logo.png" alt="Logo da página" />
           </div>
           <label className='font-serif font-medium'>Usuário</label>
           <Form.Item

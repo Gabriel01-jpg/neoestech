@@ -1,6 +1,7 @@
 import { Form, Input, InputNumber, message, Select, Spin } from "antd";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Content } from "../../../components/Content";
 import { Header } from "../../../components/Header";
@@ -30,6 +31,7 @@ const options = [
 ]
 
 export default function Create(){
+    const router = useRouter();
     const [price, setPrice] = useState(0);
     const [fuel, setFuel] = useState('');
     const [city, setCity] = useState('');
@@ -50,6 +52,7 @@ export default function Create(){
                 type: 'success',
                 content: 'Incluído com sucesso!',
             });
+            router.push('/combustiveis')
         } catch(e){
             messageApi.open({
                 type: 'error',

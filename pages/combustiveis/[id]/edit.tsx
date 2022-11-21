@@ -63,6 +63,7 @@ export default function Edit({ initialCity, initialFuel, initialPrice } : Props)
                 type: 'success',
                 content: 'Atualizado com sucesso!',
             });
+            router.push('/combustiveis')
         } catch(e){
             messageApi.open({
                 type: 'error',
@@ -128,7 +129,7 @@ export default function Edit({ initialCity, initialFuel, initialPrice } : Props)
                                         labelInValue
                                         showSearch
                                         notFoundContent={'Não encontrado'}
-                                        defaultValue={city}
+                                        defaultValue={initialFuel}
                                         onChange={handleSelectChange}
                                         filterOption={(input, option) =>
                                             (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
@@ -136,7 +137,7 @@ export default function Edit({ initialCity, initialFuel, initialPrice } : Props)
                                         options={options}
                                     />
                                 </Form.Item>
-                                <button onClick={handleSubmit} className="mb-4 mr-5 bg-purple-800 text-white px-4 py-[8px] rounded hover:brightness-90">Incluir</button>
+                                <button onClick={handleSubmit} className="mb-4 mr-5 bg-purple-800 text-white px-4 py-[8px] rounded hover:brightness-90">Atualizar</button>
                             </Form>
                         </div>
                     </div>

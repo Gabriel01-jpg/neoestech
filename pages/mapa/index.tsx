@@ -50,7 +50,7 @@ export default function Mapa(){
             dataIndex: 'name',
             key: 'operation',
             fixed: 'right',
-            render: (_, record) => <FaMapMarkerAlt onClick={() => setCenter([Number(record.latitude), Number(record.longitude)])}/>
+            render: (_, record) => <FaMapMarkerAlt className="cursor-pointer hover:text-orange-800" onClick={() => setCenter([Number(record.latitude), Number(record.longitude)])}/>
         }
     ]
 

@@ -8,7 +8,7 @@ interface Props {
 
 export function Sidebar({ sidebar } : Props){
     return (
-        <nav className={`w-full max-w max-w-[190px] font-serif xl:block ${sidebar ? 'block' : 'hidden xl:block mx-8 my-12 '}`}>
+        <nav className={`w-full max-w max-w-[190px] font-serif xl:block ${sidebar ? 'block' : 'hidden xl:block mr-8 my-12 '}`}>
             <p className="font-bold text-lg">Painel</p>
             <ul className="w-full flex flex-col gap-5 pl-2 mt-5 justify-top">
                 <Navitem routePath='/mapa' ><BsPinMap />Mapa</Navitem>
